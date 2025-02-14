@@ -8,6 +8,11 @@
   </head>
   <body>
     <h1 class="hello">Todo list</h1>
+    <div id="family">
+      <div id="child-1">child 1</div>
+      <div id="child-2">child 2</div>
+      <button onclick="deleteTodo()">Delete todo</button>
+    </div>
     <h4 id="counter"></h4>
     <div>
       <input type="text" placeholder="Add your todo here" /><button
@@ -26,6 +31,10 @@
           count++;
           counter.innerHTML = count;
         }, 1000);
+      }
+      function deleteTodo() {
+        const elm = document.getElementById("child-1");
+        document.getElementById("family").removeChild(elm);
       }
     </script>
   </body>
