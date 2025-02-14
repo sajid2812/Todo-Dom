@@ -8,17 +8,24 @@
   </head>
   <body>
     <h1 class="hello">Todo list</h1>
-    <h4 class="hello">Hello World!</h4>
-    <h4 class="hello">Hello World!</h4>
-    <h4 class="hello">Hello World!</h4>
-    <h4 class="hello">Hello World!</h4>
+    <h4 id="counter"></h4>
     <div>
-      <input type="text" placeholder="Add your todo here" /><button id="btn" onclick="addTodo()">Add Todo</button>
+      <input type="text" placeholder="Add your todo here" /><button
+        id="btn"
+        onclick="addTodo()"
+      >
+        Add Todo
+      </button>
     </div>
     <script>
       function addTodo() {
-        const inputElem = document.querySelector("input");
-        console.log(inputElem.value);
+        const counter = document.querySelector("#counter");
+        let count = 1;
+        counter.innerHTML = count;
+        setInterval(() => {
+          count++;
+          counter.innerHTML = count;
+        }, 1000);
       }
     </script>
   </body>
