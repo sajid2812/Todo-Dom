@@ -15,7 +15,7 @@
     <div>
       <div id="list"></div>
       <div
-        style="display: flex; gap: 12px; align-items: center; margin-top: 16px;"
+        style="display: flex; gap: 12px; align-items: center; margin-top: 16px"
       >
         <input
           style="
@@ -43,16 +43,27 @@
       </div>
     </div>
     <script>
+      const todos = [];
+
       function addTodo() {
         const inputElm = document.querySelector("input");
         if (!inputElm.value) return;
-        const newTodo = document.createElement("div");
-        newTodo.innerHTML = inputElm.value;
-        newTodo.style.cssText =
-          "background: #393e46; color: #eeeeee; padding: 16px; border-radius: 5px; margin-top: 8px";
-        const list = document.getElementById("list");
-        list.appendChild(newTodo);
+        todos.push({
+          todo: inputElm.value,
+        });
         inputElm.value = "";
+        render();
+      }
+
+      function render() {
+        document.getElementById("list").innerHTML = "";
+        for (let i = 0; i < todos.length; i++) {
+          const newTodo = document.createElement("div");
+          newTodo.innerHTML = todos[i].todo;
+          newTodo.style.cssText =
+            "background: #393e46; color: #eeeeee; padding: 16px; border-radius: 5px; margin-top: 8px";
+          document.getElementById("list").appendChild(newTodo);
+        }
       }
     </script>
   </body>
