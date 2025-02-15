@@ -1,11 +1,59 @@
 <html>
-  <body>
-    <div id="parent">hi there</div>
+  <head>
+    <title>Todo App</title>
+  </head>
+  <body
+    style="
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #222831;
+    "
+  >
+    <div>
+      <div id="list"></div>
+      <div
+        style="display: flex; gap: 12px; align-items: center; margin-top: 16px;"
+      >
+        <input
+          style="
+            padding: 12px;
+            background: #eeeeee;
+            border: 1px solid #eeeeee;
+            border-radius: 5px;
+          "
+          type="text"
+          placeholder="Add todo here"
+        />
+        <button
+          style="
+            border: none;
+            border-radius: 5px;
+            padding: 12px;
+            background: #00adb5;
+            color: #eeeeee;
+            cursor: pointer;
+          "
+          onclick="addTodo()"
+        >
+          Add todo
+        </button>
+      </div>
+    </div>
     <script>
-      const parentElm = document.getElementById("parent");
-      const childElm = document.createElement("div");
-      childElm.innerHTML = 'Hello';
-      parentElm.appendChild(childElm);
+      function addTodo() {
+        const inputElm = document.querySelector("input");
+        if (!inputElm.value) return;
+        const newTodo = document.createElement("div");
+        newTodo.innerHTML = inputElm.value;
+        newTodo.style.cssText =
+          "background: #393e46; color: #eeeeee; padding: 16px; border-radius: 5px; margin-top: 8px";
+        const list = document.getElementById("list");
+        list.appendChild(newTodo);
+        inputElm.value = "";
+      }
     </script>
   </body>
 </html>
